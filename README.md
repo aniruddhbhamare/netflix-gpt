@@ -18,6 +18,3 @@
 - NetflixGPT
     - Search Bar
     - Movie Suggestions
-
-    ssh-keygen -t ed25519 -C "bhamare.anirudha@gmail.com"
-    Agent pid 23357
