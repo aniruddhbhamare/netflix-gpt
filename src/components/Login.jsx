@@ -8,11 +8,14 @@ import {
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router";
+import { signIn } from "../utils/store/userSlice";
+import { useNavigate } from "react-router-dom";
+import { USER_AVATAR } from "../utils/constants";
 
 const Login = () => {
   const userData = useSelector((store) => store?.user?.user);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   if (userData !== undefined) {
     console.log(userData);
   }
@@ -42,10 +45,10 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: `${name?.current?.value}`,
-            photoURL:
-              "https://png.pngtree.com/png-clipart/20190904/original/pngtree-user-cartoon-circular-pattern-png-image_4492887.jpg",
+            photoURL: USER_AVATAR,
           })
             .then(() => {
+              // dispatch(signIn(auth.currentUser));
               // Profile updated!
               navigate("/browse");
             })
@@ -58,7 +61,6 @@ const Login = () => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setErrorMessage(errorCode, " ", errorMessage);
-          // navigate("/browse");
         });
     } else {
       //Sign IN Logic
@@ -67,7 +69,6 @@ const Login = () => {
         .then((userCredential) => {
           const user = userCredential.user;
           console.log("signInWithEmailAndPassword", user);
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -83,7 +84,7 @@ const Login = () => {
       <div className="absolute">
         <img
           src="https://assets.nflxext.com/ffe/siteui/vlv3/9d3533b2-0e2b-40b2-95e0-ecd7979cc88b/a3873901-5b7c-46eb-b9fa-12fea5197bd3/IN-en-20240311-popsignuptwoweeks-perspective_alpha_website_medium.jpg"
-          className=""
+          className="bg-cover "
         />
       </div>
       <form

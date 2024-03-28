@@ -9,6 +9,7 @@ const userSlice = createSlice({
   reducers: {
     signIn: (state, action) => {
       state.isAuthenticated = true;
+      // console.log("REDUCER", action);
       state.user = action.payload;
     },
     signOut: (state, action) => {
