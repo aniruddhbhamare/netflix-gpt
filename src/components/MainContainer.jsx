@@ -4,7 +4,7 @@ import VideoBackground from "./VideoBackground";
 import VideoTitle from "./VideoTitle";
 
 export const MainContainer = () => {
-  const movies = useSelector((store) => store?.movies?.movies);
+  const movies = useSelector((store) => store?.movies?.nowPlayingMovies);
 
   // Early Return
   if (!movies) return;

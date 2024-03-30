@@ -17,7 +17,7 @@ const useGetNowPlayingMovies = () => {
     );
     const json = await movieList.json();
     dispatch(addNowPlayingMovies(json.results));
-    // console.log("Movie List", json.results);
+    console.log("Movie List | Fetch Now Playing Movies", json.results);
   };
 };
 
