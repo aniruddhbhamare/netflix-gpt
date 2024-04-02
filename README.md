@@ -35,6 +35,10 @@
 - IMDB Image URL
 - Made the Browse page amazing with Tailwind css
 - usePopularMovies Custom hooks
+- GPT Search Page
+- GPT Search bar
+- (BONUS) Milti-language Feature in our App
+- 
 
 
 # Features

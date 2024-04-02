@@ -4,11 +4,15 @@ import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { signIn, signOut } from "../utils/store/userSlice";
 import { onAuthStateChanged, signOut as fSignOut } from "firebase/auth";
-import { LOGO } from "../utils/constants";
+import { LOGO, SUPPORTED_LANGUAGES } from "../utils/constants";
+import { toggleGptSearchView } from "../utils/store/gptSlice";
+import { changeLanguage } from "../utils/store/configSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const userData = useSelector((store) => store?.user?.user);
+  const showGptSearch = useSelector((store) => store?.gpt?.showGptSearch);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -38,17 +42,53 @@ const Header = () => {
       });
   };
 
+  const handleGptSearch = () => {
+    dispatch(toggleGptSearchView());
+  };
+
+  const handleSelectLanguage = (e) => {
+    dispatch(changeLanguage(e.target.value));
+    // console.log("Value", e.target.value);
+  };
   return (
     <div className=" flex justify-between items-center absolute w-screen z-10 px-3 py-1 bg-gradient-to-b from-black">
       <img className="max-w-48" src={LOGO} alt="logo" />
       {userData && (
-        <div className="flex">
+        <div className="flex justify-center items-center">
+          {showGptSearch && (
+            <div className="mx-3">
+              <label>
+                Lang
+                <select
+                  className="p-2 bg-black text-white opacity-70"
+                  onChange={handleSelectLanguage}
+                >
+                  {SUPPORTED_LANGUAGES.map((lang) => {
+                    return (
+                      <option key={lang.identifier} value={lang.identifier}>
+                        {lang.name}
+                      </option>
+                    );
+                  })}
+                  {/* <option value="us">US</option>
+                  <option value="hindi">Hindi</option>
+                  <option value="spanish">Spanish</option> */}
+                </select>
+              </label>
+            </div>
+          )}
+          <div className="p-2 mr-2 bg-red-800 rounded-md">
+            <button onClick={handleGptSearch} className="text-white font-bold">
+              {showGptSearch ? "Home" : "GPT Search"}
+            </button>
+          </div>
           <div className="max-w-12">
             <img className="rounded-3xl" src={userData?.photoURL} alt="logo" />
             <div className="text-center text-red-700">
-              {userData.displayName}
+              {/* {userData.displayName} */}
             </div>
           </div>
+
           <button onClick={handleSignOut} className="text-white font-bold">
             Sign Out
           </button>

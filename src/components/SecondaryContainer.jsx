@@ -11,16 +11,12 @@ export const SecondaryContainer = () => {
       <div className="bg-black p-2">
         <div className="relative -mt-48 z-20">
           <MovieList title={"Now Playing"} movies={movies?.nowPlayingMovies} />
-          <MovieList title={"Trending"} movies={movies?.nowPlayingMovies} />
-          <MovieList
-            title={"Comedy Movies"}
-            movies={movies?.nowPlayingMovies}
-          />
-          <MovieList title={"Popular"} movies={movies?.popularMovies} />
+          <MovieList title={"Top Rated"} movies={movies?.topRatedMovies} />
           <MovieList
             title={"Upcoming Movies"}
-            movies={movies?.nowPlayingMovies}
+            movies={movies?.upcomingMovies}
           />
+          <MovieList title={"Popular"} movies={movies?.popularMovies} />
         </div>
 
         {/* 
