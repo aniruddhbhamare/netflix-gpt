@@ -7,7 +7,10 @@ const GptSearchComponent = () => {
   return (
     <div className="">
       <div className="absolute -z-30">
-        <img src={BG_URL} className="bg-cover fixed" />
+        <img
+          src={BG_URL}
+          className="bg-cover fixed h-screen object-cover md:h-auto "
+        />
       </div>
       <GptSearchBar />
       <GptSearchSuggestions />

@@ -19,17 +19,17 @@ const GptSearchBar = () => {
       API_OPTIONS
     );
     const json = await data.json();
+    console.log("searchMovies", json);
+
     dispatch(addSearchMovies({ searchMovies: json.results }));
     dispatch(addSearchMovies({ isLoading: false }));
-
-    console.log("searchMovies", json);
   };
 
   const selectedLang = useSelector((store) => store?.config?.lang);
   return (
-    <div className="pt-[9%] flex justify-center">
+    <div className="pt-[40%] md:pt-[9%] flex justify-center">
       <form
-        className="w-1/2 bg-black grid grid-cols-12 p-2"
+        className="w-11/12 md:w-1/2 bg-black grid grid-cols-12 p-2"
         onClick={(e) => e.preventDefault()}
       >
         <input

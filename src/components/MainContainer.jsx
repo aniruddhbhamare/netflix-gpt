@@ -9,7 +9,7 @@ export const MainContainer = () => {
   // Early Return
   if (!movies) return;
 
-  const mainMovie = movies[10];
+  const mainMovie = movies[9];
 
   // let mainMovie;
   // const randomMovie = () => {
@@ -34,7 +34,7 @@ export const MainContainer = () => {
     vote_count,
   } = mainMovie;
   return (
-    <div>
+    <div className="md:pt-0 pt-[35%] bg-black">
       {/* <h1>MainContainer</h1> */}
       <VideoTitle title={title} overview={overview} />
       <VideoBackground movieId={id} />

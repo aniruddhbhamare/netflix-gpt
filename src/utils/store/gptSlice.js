@@ -15,7 +15,7 @@ const gptSlice = createSlice({
       console.log("addSearchMovies", action);
       const { searchMovies, isLoading } = action.payload;
       state.isLoading = isLoading;
-      state.searchMovies = searchMovies;
+      if (searchMovies != null) state.searchMovies = searchMovies;
     },
   },
 });

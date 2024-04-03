@@ -51,30 +51,29 @@ const Header = () => {
     // console.log("Value", e.target.value);
   };
   return (
-    <div className=" flex justify-between items-center absolute w-screen z-10 px-3 py-1 bg-gradient-to-b from-black">
+    <div className="flex justify-between items-center absolute w-screen z-10 px-3 py-1 bg-gradient-to-b from-black flex-col md:flex-row">
       <img className="max-w-48" src={LOGO} alt="logo" />
       {userData && (
-        <div className="flex justify-center items-center">
+        <div className="flex px-4 md:px-4 w-full md:w-auto justify-between md:justify-center items-center">
           {showGptSearch && (
             <div className="mx-3">
-              <label>
-                Lang
-                <select
-                  className="p-2 bg-black text-white opacity-70"
-                  onChange={handleSelectLanguage}
-                >
-                  {SUPPORTED_LANGUAGES.map((lang) => {
-                    return (
-                      <option key={lang.identifier} value={lang.identifier}>
-                        {lang.name}
-                      </option>
-                    );
-                  })}
-                  {/* <option value="us">US</option>
+              <label className="text-white ">Lang</label>
+
+              <select
+                className="p-2 bg-black text-white opacity-70"
+                onChange={handleSelectLanguage}
+              >
+                {SUPPORTED_LANGUAGES.map((lang) => {
+                  return (
+                    <option key={lang.identifier} value={lang.identifier}>
+                      {lang.name}
+                    </option>
+                  );
+                })}
+                {/* <option value="us">US</option>
                   <option value="hindi">Hindi</option>
                   <option value="spanish">Spanish</option> */}
-                </select>
-              </label>
+              </select>
             </div>
           )}
           <div className="p-2 mr-2 bg-red-800 rounded-md">
@@ -82,7 +81,7 @@ const Header = () => {
               {showGptSearch ? "Home" : "GPT Search"}
             </button>
           </div>
-          <div className="max-w-12">
+          <div className="hidden md:inline-block max-w-12">
             <img className="rounded-3xl" src={userData?.photoURL} alt="logo" />
             <div className="text-center text-red-700">
               {/* {userData.displayName} */}
