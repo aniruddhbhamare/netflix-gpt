@@ -1,12 +1,16 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS } from "../utils/constants";
 import { addNowPlayingMovies } from "../utils/store/moviesSlice";
 import { useEffect } from "react";
 
 const useGetNowPlayingMovies = () => {
+  const nowPlayingMovies = useSelector(
+    (store) => store?.movies?.nowPlayingMovies
+  );
+
   const dispatch = useDispatch();
   useEffect(() => {
-    getNowPlayingMovies();
+    !nowPlayingMovies && getNowPlayingMovies();
   }, []);
 
   // Fetch the movies from TMDB API and update the store
