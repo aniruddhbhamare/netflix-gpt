@@ -57,7 +57,7 @@ const Header = () => {
         <div className="flex px-4 md:px-4 w-full md:w-auto justify-between md:justify-center items-center">
           {showGptSearch && (
             <div className="mx-3">
-              <label className="text-white ">Lang</label>
+              {/* <label className="text-white ">Lang</label> */}
 
               <select
                 className="p-2 bg-black text-white opacity-70"
@@ -78,7 +78,7 @@ const Header = () => {
           )}
           <div className="p-2 mr-2 bg-red-800 rounded-md">
             <button onClick={handleGptSearch} className="text-white font-bold">
-              {showGptSearch ? "Home" : "GPT Search"}
+              {showGptSearch ? "Home" : "🔍 Search"}
             </button>
           </div>
           <div className="hidden md:inline-block max-w-12">
